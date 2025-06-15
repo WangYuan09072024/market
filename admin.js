@@ -255,7 +255,7 @@ async function handleAddProduct(e) {
     stock: isNaN(stock) ? 0 : stock,
     status,
     isBestSeller,
-    images: [imageDataUrl || "img/new.png"],
+    images: [imageDataUrl || "new.png"],
     createdAt: new Date().toISOString(),
   };
   products.unshift(newProduct);
@@ -315,8 +315,8 @@ function renderProductTable() {
             <td><small>${p.id.slice(-6)}</small></td>
             <td>
                 <img src="${
-                  p.images && p.images[0] ? p.images[0] : "img/new.png"
-                }" width="40" height="40" class="rounded me-2 object-fit-cover" onerror="this.src='img/new.png'; this.onerror=null;">
+                  p.images && p.images[0] ? p.images[0] : "new.png"
+                }" width="40" height="40" class="rounded me-2 object-fit-cover" onerror="this.src='new.png'; this.onerror=null;">
                 ${p.name}
             </td>
             <td>
