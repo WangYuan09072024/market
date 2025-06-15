@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh" data-bs-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>我的账户 - 迷你MART</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="account.css" />
+  </head>
+  <body>
+    <header class="main-header sticky-top">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <a href="index.html"
+              ><img src="logo.jpg" style="height: 2.5rem; width: 2.5rem;border-radius: 50%;"> Airi<span>心呼吸</span></a
+            >
+          </div>
+          <div class="search-box">
+            <form
+              class="search-form"
+              onsubmit="window.mainJsFunctions.handleSearch(event)"
+            >
+              <input
+                type="text"
+                placeholder="搜索产品..."
+                id="searchInput"
+                aria-label="Search products"
+              />
+              <button type="submit" aria-label="Search">
+                <i class="bi bi-search"></i>
+              </button>
+            </form>
+          </div>
+          <div class="user-actions">
+            <div id="authSection" style="display: flex; align-items: center">
+              <a href="login.html" class="btn btn-outline-light me-2">
+                <i class="bi bi-person"></i> 登录/注册
+              </a>
+              <button
+                class="btn btn-success"
+                onclick="window.mainJsFunctions.showCart()"
+                aria-label="Shopping cart"
+              >
+                <i class="bi bi-cart3"></i> <span id="cartCount">0</span>
+              </button>
+            </div>
+            <div id="welcomeSection" style="display: none; align-items: center">
+              <span class="welcome-text me-2 text-white">
+                <i class="bi bi-person-circle"></i>
+                <span id="welcomeName"></span>
+              </span>
+              <button
+                class="btn btn-success me-2"
+                onclick="window.mainJsFunctions.showCart()"
+                aria-label="Shopping cart"
+              >
+                <i class="bi bi-cart3"></i>
+                <span id="cartCountLoggedIn">0</span>
+              </button>
+              <button
+                class="btn btn-sm btn-outline-light"
+                onclick="window.mainJsFunctions.logout()"
+                aria-label="Logout"
+              >
+                <i class="bi bi-box-arrow-right"></i> 退出
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container my-5">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="list-group shadow-sm">
+            <a
+              href="#account-details"
+              class="list-group-item list-group-item-action active"
+              data-bs-toggle="tab"
+            >
+              <i class="bi bi-person-badge-fill me-2"></i>账户信息
+            </a>
+            <a
+              href="#order-history"
+              class="list-group-item list-group-item-action"
+              data-bs-toggle="tab"
+            >
+              <i class="bi bi-receipt-cutoff me-2"></i>订单历史
+            </a>
+            <a
+              href="#change-password"
+              class="list-group-item list-group-item-action"
+              data-bs-toggle="tab"
+            >
+              <i class="bi bi-shield-lock-fill me-2"></i>更改密码
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-9">
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="account-details">
+              <div class="card shadow-sm">
+                <div class="card-header bg-light">
+                  <h4 class="h5 mb-0">
+                    <i class="bi bi-person-circle me-2"></i>您的个人信息
+                  </h4>
+                </div>
+                <div class="card-body">
+                  <form id="userInfoForm">
+                    <div class="mb-3">
+                      <label for="accountDetailName" class="form-label"
+                        ><strong>姓名:</strong></label
+                      >
+                      <input
+                        type="text"
+                        class="form-control form-control-sm"
+                        id="accountDetailName"
+                        placeholder="输入您的姓名"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="accountDetailEmail" class="form-label"
+                        ><strong>邮箱:</strong></label
+                      >
+                      <input
+                        type="email"
+                        class="form-control form-control-sm"
+                        id="accountDetailEmail"
+                        readonly
+                        disabled
+                      />
+                      <small class="form-text text-muted"
+                        ><i>邮箱地址不能更改</i></small
+                      >
+                    </div>
+                    <div class="mb-3">
+                      <label for="accountDetailPhone" class="form-label"
+                        ><strong>电话号码:</strong></label
+                      >
+                      <input
+                        type="tel"
+                        class="form-control form-control-sm"
+                        id="accountDetailPhone"
+                        placeholder="输入您的电话号码"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="accountDetailAddress" class="form-label"
+                        ><strong>收货地址:</strong></label
+                      >
+                      <textarea
+                        class="form-control form-control-sm"
+                        id="accountDetailAddress"
+                        rows="3"
+                        placeholder="输入您的收货地址"
+                      ></textarea>
+                    </div>
+                    <p class="mb-2">
+                      <small
+                        ><strong>注册日期:</strong>
+                        <span id="accountDetailJoined" class="text-muted"
+                          >正在下载...</span
+                        ></small
+                      >
+                    </p>
+                    <button type="submit" class="btn btn-success btn-sm mt-2">
+                      <i class="bi bi-save me-1"></i> 保存信息
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="order-history">
+              <div class="card shadow-sm">
+                <div class="card-header bg-light">
+                  <h4 class="h5 mb-0">
+                    <i class="bi bi-list-ul me-2"></i>您的订单
+                  </h4>
+                  <p>
+                    <i style="font-size: 10px">(若要取消麻烦您联系客服哦 ~)</i>
+                  </p>
+                </div>
+
+                <div class="card-body">
+                  <div id="orderHistoryContainer" class="table-responsive">
+                    <p class="text-muted">正在加载订单历史...</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="change-password">
+              <div class="card shadow-sm">
+                <div class="card-header bg-light">
+                  <h4 class="h5 mb-0">
+                    <i class="bi bi-key me-2"></i>更改您的密码
+                  </h4>
+                </div>
+                <div class="card-body">
+                  <form id="changePasswordForm">
+                    <div class="mb-3">
+                      <label for="currentPassword" class="form-label"
+                        >当前密码</label
+                      >
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="currentPassword"
+                        required
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="newPassword" class="form-label">新密码</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="newPassword"
+                        required
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="confirmNewPassword" class="form-label"
+                        >确认新密码</label
+                      >
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="confirmNewPassword"
+                        required
+                      />
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                      <i class="bi bi-save me-2"></i>保存新密码
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="main-footer bg-dark text-white pt-5 pb-3 mt-auto"></footer>
+
+    <div
+      class="toast-container position-fixed bottom-0 end-0 p-3"
+      style="z-index: 1100"
+    >
+      <div
+        id="liveToast"
+        class="toast align-items-center"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="d-flex">
+          <div class="toast-body"></div>
+          <button
+            type="button"
+            class="btn-close btn-close-white me-2 m-auto"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+    </div>
+
+    <div id="loadingOverlay" style="display: none; /* ... */"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js" defer></script>
+    <script src="account.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="main.js" defer></script>
+    <script src="account.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="main.js" defer></script>
+    <script src="account.js" defer></script>
+  </body>
+</html>
