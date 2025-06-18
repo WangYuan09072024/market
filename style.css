@@ -1,17 +1,16 @@
 /* 全局样式 */
 :root {
-  --primary-color: #ff4f81; /* Hồng tươi sáng */
-  --primary-light: #ff8fb3; /* Hồng nhạt hơn */
-  --primary-dark: #c73d65; /* Hồng đậm hơn */
-  --secondary-color: #ffe1e6; /* Trắng hồng nhạt */
-  --text-dark: #000; /* Chữ trắng */
-  --border-color: #ff4f81; /* Hồng tươi sáng cho đường viền */
-  --success-color: #85e3b8; /* Xanh lá cây nhẹ nhàng */
-  --danger-color: #ff6b6b; /* Đỏ tươi sáng */
-  --warning-color: #ffcc00; /* Vàng sáng */
-  --info-color: #4db8e1; /* Xanh lam tươi sáng */
+  --primary-color: #c49ee4; /* Tím lavender - lấy làm màu chủ đạo */
+  --primary-light: #eadbff; /* Tím rất nhạt - lấy từ màu bạn cung cấp */
+  --primary-dark: #a78fbf;  /* Tím đậm hơn - được điều chỉnh từ màu chủ đạo */
+  --secondary-color: hsla(308, 33%, 87%, 0.262); /* Tím rất nhạt cho nền hoặc các yếu tố phụ */
+  --text-dark: #000;         /* Giữ nguyên màu chữ đen để đảm bảo độ tương phản */
+  --border-color: #c49ee4;    /* Đường viền cùng màu với màu chủ đạo */
+  --success-color: #85e3b8; /* Xanh lá cây (giữ nguyên) */
+  --danger-color: #ff6b6b;  /* Đỏ (giữ nguyên) */
+  --warning-color: #ffcc00; /* Vàng (giữ nguyên) */
+  --info-color: #4db8e1;    /* Xanh lam (giữ nguyên) */
 }
-
 
 
 
@@ -199,37 +198,7 @@ body {
   text-align: center;
 }
 
-/* 产品网格 */
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-}
 
-.product-card .product-image-wrapper {
-  width: 100%;
-  /* Tỷ lệ 1:1 (vuông). Bạn có thể đổi thành 75% cho 4:3 nếu muốn ảnh rộng hơn */
-  padding-top: 100%;
-  position: relative;
-  overflow: hidden;
-  background-color: #f0f0f0; /* Màu nền nhẹ cho ảnh */
-  border-top-left-radius: calc(0.375rem - 1px);
-  border-top-right-radius: calc(0.375rem - 1px);
-}
-
-.product-card .product-card-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* QUAN TRỌNG: Ảnh lấp đầy khung, phần thừa bị cắt */
-  transition: transform 0.3s ease-in-out;
-}
-
-.product-card:hover .product-card-img {
-  transform: scale(1.03);
-}
 
 /* Các style khác cho product-title, product-price đã có ở phản hồi #59 */
 .product-card .product-title {
@@ -309,6 +278,7 @@ body {
   font-size: 36px;
   color: var(--primary-color);
   margin-bottom: 15px;
+  color: #ff00f2;
 }
 
 .feature-item h4 {
@@ -802,3 +772,62 @@ section {
     display: block !important; /* Hiển thị nút đóng sidebar trên mobile */
   }
 }
+
+
+/* 1. Thiết lập một khung chứa ảnh với chiều cao cố định */
+.product-card .product-image-wrapper {
+  height: 220px; /* Bạn có thể thay đổi giá trị này (ví dụ: 200px, 250px) để ảnh cao hoặc thấp hơn theo ý muốn */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Ẩn đi phần ảnh bị thừa */
+  background-color: #f8f9fa; /* Thêm màu nền nhẹ cho các ảnh có nền trong suốt */
+}
+
+/* 2. Ép ảnh phải lấp đầy khung chứa mà không bị méo */
+.product-card .product-image-wrapper img.card-img-top {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Đây là thuộc tính quan trọng nhất: nó sẽ tự cắt ảnh để vừa khung mà không làm méo ảnh */
+}
+
+/* Tùy chỉnh nhỏ để thẻ sản phẩm trông cân đối hơn */
+.product-card .card-body {
+  padding-top: 0.75rem;
+  padding-bottom: 0.5rem;
+}
+
+.product-card .product-title {
+  font-size: 0.9rem;
+  line-height: 1.3;
+  height: 2.6em; /* Giới hạn chiều cao cho tên sản phẩm (khoảng 2 dòng) */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* 1. Thêm hiệu ứng chuyển động mượt mà cho thẻ sản phẩm */
+.product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none; /* Bỏ border mặc định nếu có */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Thêm bóng mờ nhẹ mặc định */
+}
+
+/* 2. Định nghĩa hiệu ứng khi người dùng di chuột vào */
+.product-card:hover {
+  transform: translateY(-8px); /* Di chuyển thẻ sản phẩm lên trên một chút */
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15); /* Tăng cường độ bóng để tạo cảm giác "nổi" */
+}
+
+/* 3. Thêm hiệu ứng chuyển động mượt mà cho ảnh sản phẩm */
+.product-card .product-image-wrapper img {
+  transition: transform 0.3s ease;
+}
+
+/* 4. Phóng to ảnh một chút khi di chuột vào thẻ sản phẩm */
+.product-card:hover .product-image-wrapper img {
+  transform: scale(1.05); /* Phóng to ảnh lên 5% */
+}
+/*========================*/
