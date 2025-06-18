@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <tr>
                     <td><small>#${order.id.slice(-8)}</small></td>
                     <td><small>${new Date(order.date).toLocaleDateString('zh-CN', {day:'2-digit', month:'2-digit', year:'numeric'})}</small></td>
-                    <td class="text-end fw-bold">₱${order.totalAmount.toFixed(2)}</td>
+                    <td class="text-end fw-bold">MMK${order.totalAmount.toFixed(2)}</td>
                     <td><span class="badge bg-${getOrderStatusClass(order.status)}">${translateOrderStatus(order.status)}</span></td>
                     <td>
                         <button class="btn btn-sm btn-outline-primary py-0 px-1" 
