@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="迷你商店 - 您的便利购物天堂，提供各种优质食品、饮料和日用品">
-  <meta name="keywords" content="迷你商店,购物,食品,饮料,日用品,菲律宾">
+  <meta name="description" content="Airi商店 - 您的便利购物天堂，提供各种优质食品、饮料和日用品">
+  <meta name="keywords" content="Airi商店,购物,食品,饮料,日用品,菲律宾">
   <title>AIRI商店</title>
   
   <!-- PWA Metadata -->
@@ -32,7 +32,7 @@
       <div class="header-content">
         <div class="logo">
           <a href="index.html">
-            <img src="logo.jpg" style="height: 2.5rem; width: 2.5rem;border-radius: 50%;"> Airi<span>心呼吸</span>
+            <img src="logo.jpg" style="height: 4rem; width: 4rem;border-radius: 50%;"> Airi<span>心呼吸</span>
           </a>
           <button class="menu-toggle d-md-none" onclick="toggleSidebar()">
             <i class="bi bi-list"></i>
@@ -92,23 +92,8 @@
               <i class="bi bi-x-lg"></i>
             </button>
           </div>
-          <ul class="category-list">
-            <li><a onclick="filterByCategory('热销产品')"><i class="bi bi-star-fill"></i> 热销产品</a></li>
-            <li><a onclick="filterByCategory('食品')"><i class="bi bi-basket-fill"></i> 食品</a></li>
-            <li><a onclick="filterByCategory('零食 / 小吃')"><i class="bi bi-cookie"></i> 零食 / 小吃</a></li>
-            <li><a onclick="filterByCategory('饮料 / 啤酒')"><i class="bi bi-cup-straw"></i> 饮料 / 啤酒</a></li>
-            <li><a onclick="filterByCategory('方便面 / 粥 / 米粉 / 粉丝')"><i class="bi bi-noodles"></i> 方便面 / 粥 / 米粉 / 粉丝</a></li>
-            <li><a onclick="filterByCategory('0元购物')"><i class="bi bi-gift-fill"></i> 0元购物</a></li>
-            <li><a onclick="filterByCategory('即食食品')"><i class="bi bi-egg-fried"></i> 即食食品</a></li>
-            <li><a onclick="filterByCategory('蔬菜 / 水果')"><i class="bi bi-apple"></i> 蔬菜 / 水果</a></li>
-            <li><a onclick="filterByCategory('日常食品')"><i class="bi bi-basket2-fill"></i> 日常食品</a></li>
-            <li><a onclick="filterByCategory('牛奶')"><i class="bi bi-cup-hot"></i> 牛奶</a></li>
-            <li><a onclick="filterByCategory('咖啡')"><i class="bi bi-cup-hot-fill"></i> 咖啡</a></li>
-            <li><a onclick="filterByCategory('药品')"><i class="bi bi-capsule"></i> 药品</a></li>
-            <li><a onclick="filterByCategory('书籍推荐')"><i class="bi bi-book-fill"></i> 书籍推荐</a></li>
-            <li><a onclick="filterByCategory('')"><i class="bi bi-grid-fill"></i> 全部产品</a></li>
+          <ul class="category-list" id="categoryListSidebar">
           </ul>
-          
           <div class="sidebar-footer d-md-none">
             <div class="social-links">
               <a href="#"><i class="bi bi-facebook"></i></a>
@@ -138,22 +123,22 @@
     <div class="container">
       <div class="row">
         <div class="col-md-3 feature-item">
-          <i class="bi bi-shield-check"></i>
+          <i class="bi bi-shield-check" id="abc"></i>
           <h4>正品保障</h4>
           <p>100%正品保证，假一赔十</p>
         </div>
         <div class="col-md-3 feature-item">
-          <i class="bi bi-truck"></i>
+          <i class="bi bi-truck" id="abc"></i>
           <h4>快速配送</h4>
           <p>马尼拉市区当日送达</p>
         </div>
         <div class="col-md-3 feature-item">
-          <i class="bi bi-arrow-repeat"></i>
+          <i class="bi bi-arrow-repeat" id="abc"></i>
           <h4>无忧退换</h4>
           <p>7天无理由退换货</p>
         </div>
         <div class="col-md-3 feature-item">
-          <i class="bi bi-headset"></i>
+          <i class="bi bi-headset" id="abc"></i>
           <h4>24/7 客服</h4>
           <p>全天候为您服务</p>
         </div>
@@ -186,7 +171,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4 footer-col">
-          <h4><i class="bi bi-shop"></i> 迷你MART</h4>
+          <h4><i class="bi bi-shop"></i> AIRI商店</h4>
           <p>为您提供最优质的生活必需品和最便捷的购物体验</p>
           <div class="social-links">
             <a href="#"><i class="bi bi-facebook"></i></a>
@@ -213,14 +198,14 @@
         </div>
         <div class="col-md-3 footer-col">
           <h4>联系我们</h4>
-          <p><i class="bi bi-geo-alt"></i> 菲律宾马尼拉帕赛市</p>
+          <p><i class="bi bi-geo-alt"></i> 缅甸</p>
           <p><i class="bi bi-telephone"></i> 0981666686</p>
           <p><i class="bi bi-envelope"></i> info@minimart.ph</p>
           <p><i class="bi bi-clock"></i> 营业时间: 8:00 - 22:00</p>
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="copyright">&copy; 2025 迷你MART. 保留所有权利。</p>
+        <p class="copyright">&copy; 2025 Airi MART. 保留所有权利。</p>
       </div>
     </div>
   </footer>
@@ -279,7 +264,7 @@
   <div class="toast-container position-fixed bottom-0 end-0 p-3">
     <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
-        <strong class="me-auto">迷你MART</strong>
+        <strong class="me-auto">AIRI商店</strong>
         <small>刚刚</small>
         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
